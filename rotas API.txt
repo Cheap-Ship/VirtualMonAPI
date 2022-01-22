@@ -1,0 +1,22 @@
+Realidade aumentada
+- get where codigo = codigo lido na camara, retorna a maquina correspondente para se fazer a chamada à api da rio pele
+- potencialmente post se introdução de máquinas for uma realidade, e pela mesma lógica, put e delete
+
+Notificações
+- post para criar a notificação no sistema
+- get para gerar a notificação no telemovel do operário
+- patch lido/não lido
+ou pode-se fazer o post ao mesmo tempo que se gera a notificação no telemovel do operario e apenas se guardar na api
+hora - gerar na app ou na api? possibilidade de uso do "createdAt" - usar createdAt, extrair a hora
+verificar existencia do operário? - se ouver tempo
+
+Utilizadores
+- get info para perfil
+- post de login
+- post de registo
+- patch para adição de badges
+- patch alteração de pass
+- patch alteração de turno
+- patch ser notificado fora do turno ou não
+- patch cargo e delete de utilizadores em gestão admin
+tokens só admin como?? - mandar cargo no gerador do token, reverse engineer para descobrir o cargo
