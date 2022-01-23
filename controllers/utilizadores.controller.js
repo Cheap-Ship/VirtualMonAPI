@@ -20,8 +20,8 @@ exports.login = async (req, res) => {
     if (!utilizador) res.status(401).send('Unauthorized');
     const passwordIsValid = bcrypt.compareSync(req.body.password, utilizador.password);
     if (!passwordIsValid) res.status(401).send('Unauthorized'); 
-    utilities.generateToken({cargo: req.body.cargo}, (token) => {
-        res.status(200).json({"token": token}); 
+    utilities.generateToken({cargo: utilizador.cargo}, (token) => {
+        res.status(200).json({"token": token, "id": utilizador.id}); 
     })
 }
 
