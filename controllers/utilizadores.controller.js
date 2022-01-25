@@ -155,7 +155,7 @@ exports.delete = (req, res) => {
     Utilizador.destroy({ where: { id: req.params.id } })
         .then(num => {
             if (num == 1) {
-                res.status(200).send("User Deleted.");
+                res.status(200).json({"response": "User Deleted"});
             } else {
                 res.status(404).send("User not Found.");
             }
