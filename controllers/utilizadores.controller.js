@@ -53,14 +53,10 @@ const getUpdateError = (data, id, body) => {
 }
 
 exports.newPassword = async (req, res) => {
-    let utilizador = await Utilizador.findOne({ where: { id: req.params.id } });
-    if (!utilizador) res.status(401).send('User not Found');
-    const passwordIsValid = bcrypt.compareSync(req.body.oldpassword, utilizador.password);
-    if (!passwordIsValid) res.status(401).send('Unauthorized'); 
     Utilizador.update({password: bcrypt.hashSync(req.body.newpassword, 8)}, { where: { id: req.params.id } })
         .then(num => {
             if (num == 1) {
-                res.status(200).send('Password Updated');
+                res.status(200).json({"response": "Password Updated"});
             } else {
                 Utilizador.findByPk(req.params.id)
                     .then(data => {
@@ -78,7 +74,7 @@ exports.newShift = (req, res) => {
     Utilizador.update({turnoInicio: req.body.turnoInicio, turnoFim: req.body.turnoFim}, { where: { id: req.params.id } })
         .then(num => {
             if (num == 1) {
-                res.status(200).send('Shift Updated');
+                res.status(200).json({"response": "Shift Updated"});
             } else {
                 Utilizador.findByPk(req.params.id)
                     .then(data => {
@@ -96,7 +92,7 @@ exports.notify = (req, res) => {
     Utilizador.update({notificarFora: req.body.notificarFora}, { where: { id: req.params.id } })
         .then(num => {
             if (num == 1) {
-                res.status(200).send('Notification Preference Updated');
+                res.status(200).json({"response": "Notification Preference Updated"});
             } else {
                 Utilizador.findByPk(req.params.id)
                     .then(data => {
@@ -119,7 +115,7 @@ exports.newBadge = async (req, res) => {
     Utilizador.update({badges: jsonStr}, { where: { id: req.params.id } })
         .then(num => {
             if (num == 1) {
-                res.status(200).send('User Updated');
+                res.status(200).json({"response": "Badges Updated"});
             } else {
                 Utilizador.findByPk(req.params.id)
                     .then(data => {
@@ -137,7 +133,7 @@ exports.newPost = (req, res) => {
     Utilizador.update({cargo: req.body.cargo}, { where: { id: req.params.id } })
         .then(num => {
             if (num == 1) {
-                res.status(200).send('Post Updated');
+                res.status(200).json({"response": "Post Updated"});
             } else {
                 Utilizador.findByPk(req.params.id)
                     .then(data => {

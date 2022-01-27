@@ -53,7 +53,6 @@ router.get('/:id',  function (req, res) {
 })
 
 router.patch('/newPassword/:id', [
-    body('oldpassword').notEmpty().escape(), 
     body('newpassword').notEmpty().escape()
 ], function (req, res) {
     const errors = validationResult(req); 
